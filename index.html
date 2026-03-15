@@ -40,6 +40,68 @@
         @keyframes drift { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(8px, -12px); } 50% { transform: translate(-5px, 8px); } 75% { transform: translate(10px, 5px); } }
         .connection { position: fixed; height: 1px; background: linear-gradient(90deg, transparent, rgba(230, 126, 34, 0.06), transparent); transform-origin: left center; pointer-events: none; }
         .connection:nth-child(7) { top: 30%; left: 10%; width: 200px; transform: rotate(15deg); } .connection:nth-child(8) { top: 65%; left: 60%; width: 150px; transform: rotate(-20deg); } .connection:nth-child(9) { top: 50%; left: 20%; width: 180px; transform: rotate(8deg); }
+        .cursor { display: inline-block; color: #e67e22; font-weight: 300; margin-left: 0.1rem; animation: blink 1s step-end infinite; animation-delay: 1.2s; animation-fill-mode: both; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        @media (max-width: 640px) { .container { padding: 1.5rem; } .mark { font-size: 2.5rem; } .manifesto p:first-child { font-size: 1.1rem; } .manifesto p { font-size: 1rem; } .social { gap: 1.2rem; flex-wrap: wrap; } }
+    </style>
+</head>
+<body>
+    <div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div>
+    <div class="connection"></div><div class="connection"></div><div class="connection"></div>
+    <div class="container">
+        <div class="mark"><span>N</span><span>O</span><span>M</span><span>I</span><span>N</span><span>E</span><span>X</span><span class="cursor">|</span></div>
+        <div class="manifesto">
+            <p>Memory should compound, not reset.</p>
+            <p>Every conversation your AI has builds knowledge — preferences, decisions, vocabulary, context, the things that make work meaningful. Right now, all of it evaporates. Every session starts from zero.</p>
+            <p>Nominex is the infrastructure layer that changes this. Not a smarter agent — the <em>memory</em> that makes all agents smarter. Captured automatically, structured semantically, owned entirely by you.</p>
+        </div>
+        <div class="divider"></div>
+        <div class="thesis">building in public · claude-native · open source soon</div>
+        <div class="social"><a href="https://x.com/nominex_ai" target="_blank" rel="noopener">X</a></div>
+    </div>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nominex — Memory Infrastructure for AI</title>
+    <meta name="description" content="AI agents forget everything. We're fixing that. Nominex is the persistent memory layer that makes AI agents smarter over time.">
+    <meta property="og:title" content="Nominex — Memory Infrastructure for AI">
+    <meta property="og:description" content="AI agents forget everything. We're fixing that.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nominex.org">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@nominex_ai">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0e17; color: #e0e0e0; font-family: 'Inter', system-ui, sans-serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+        body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(230, 126, 34, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(230, 126, 34, 0.02) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+        body::after { content: ''; position: fixed; top: 30%; left: 50%; transform: translate(-50%, -50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(230, 126, 34, 0.04) 0%, transparent 70%); pointer-events: none; }
+        .container { position: relative; z-index: 1; max-width: 640px; padding: 2rem; text-align: center; }
+        .mark { font-family: 'JetBrains Mono', monospace; font-size: 3.5rem; font-weight: 700; letter-spacing: 0.15em; color: #e67e22; margin-bottom: 3rem; }
+        .mark span { opacity: 0; animation: fadeIn 0.6s ease forwards; }
+        .mark span:nth-child(1) { animation-delay: 0.3s; } .mark span:nth-child(2) { animation-delay: 0.4s; } .mark span:nth-child(3) { animation-delay: 0.5s; } .mark span:nth-child(4) { animation-delay: 0.6s; } .mark span:nth-child(5) { animation-delay: 0.7s; } .mark span:nth-child(6) { animation-delay: 0.8s; } .mark span:nth-child(7) { animation-delay: 0.9s; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        .manifesto { margin-bottom: 3rem; }
+        .manifesto p { font-size: 1.15rem; line-height: 1.75; color: #8899aa; margin-bottom: 1.5rem; font-weight: 300; }
+        .manifesto p:first-child { font-family: 'JetBrains Mono', monospace; font-size: 1.3rem; font-weight: 400; color: #e0e0e0; line-height: 1.6; }
+        .manifesto em { color: #e67e22; font-style: normal; }
+        .divider { width: 40px; height: 1px; background: #1e293b; margin: 2.5rem auto; }
+        .thesis { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #8899aa; letter-spacing: 0.05em; margin-bottom: 3rem; line-height: 1.8; }
+        .social { display: flex; gap: 2rem; justify-content: center; align-items: center; }
+        .social a { color: #8899aa; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; letter-spacing: 0.05em; transition: color 0.2s ease; position: relative; }
+        .social a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: #e67e22; transition: width 0.2s ease; }
+        .social a:hover { color: #e67e22; }
+        .social a:hover::after { width: 100%; }
+        .node { position: fixed; width: 4px; height: 4px; border-radius: 50%; background: #e67e22; opacity: 0; animation: drift 12s ease-in-out infinite; }
+        .node:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; opacity: 0.15; } .node:nth-child(2) { top: 70%; left: 85%; animation-delay: 3s; opacity: 0.1; } .node:nth-child(3) { top: 40%; left: 90%; animation-delay: 6s; opacity: 0.08; } .node:nth-child(4) { top: 80%; left: 15%; animation-delay: 9s; opacity: 0.12; } .node:nth-child(5) { top: 25%; left: 75%; animation-delay: 2s; opacity: 0.06; } .node:nth-child(6) { top: 60%; left: 5%; animation-delay: 7s; opacity: 0.1; }
+        @keyframes drift { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(8px, -12px); } 50% { transform: translate(-5px, 8px); } 75% { transform: translate(10px, 5px); } }
+        .connection { position: fixed; height: 1px; background: linear-gradient(90deg, transparent, rgba(230, 126, 34, 0.06), transparent); transform-origin: left center; pointer-events: none; }
+        .connection:nth-child(7) { top: 30%; left: 10%; width: 200px; transform: rotate(15deg); } .connection:nth-child(8) { top: 65%; left: 60%; width: 150px; transform: rotate(-20deg); } .connection:nth-child(9) { top: 50%; left: 20%; width: 180px; transform: rotate(8deg); }
         .cursor { display: inline-block; width: 2px; height: 3rem; background: #e67e22; margin-left: 0.3rem; vertical-align: middle; animation: blink 1s step-end infinite; opacity: 0; animation-delay: 1.2s; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
         @media (max-width: 640px) { .container { padding: 1.5rem; } .mark { font-size: 2.5rem; } .manifesto p:first-child { font-size: 1.1rem; } .manifesto p { font-size: 1rem; } .social { gap: 1.2rem; flex-wrap: wrap; } }
