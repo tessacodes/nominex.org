@@ -124,6 +124,43 @@
             margin: 2.5rem auto;
         }
 
+        .paper {
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .paper a {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            color: #e67e22;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .paper a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #e67e22;
+            transition: width 0.2s ease;
+        }
+
+        .paper a:hover::after {
+            width: 100%;
+        }
+
+        .paper-desc {
+            font-size: 0.85rem;
+            color: #8899aa;
+            margin-top: 0.6rem;
+            font-weight: 300;
+        }
+
         .thesis {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
@@ -265,6 +302,11 @@
         </div>
 
         <div class="divider"></div>
+
+        <div class="paper">
+            <a href="research/what-we-found-building-poor-mans-multi-agent-memory.html">We wrote about what we found</a>
+            <p class="paper-desc">What actually happens when you give AI agents persistent memory and let them run.</p>
+        </div>
 
         <div class="thesis">
             building in public · claude-native · open source soon
