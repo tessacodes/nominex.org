@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eval-Meta Diagnostic — Nominex Research</title>
+    <meta name="description" content="A blank agent scored 0.92 on our eval rubric. So did four of our established agents. This is the diagnostic that found out why.">
+    <meta property="og:title" content="Eval-Meta: When Your Eval Measures the Model, Not the Agent">
+    <meta property="og:description" content="20 probes, 7 agent dispatches, one finding: task-completion rubrics measure model capability, not agent value.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://nominex.org/research/eval-meta/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@nominex_ai">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0e17;
+            color: #b8bcc6;
+            font-family: 'Inter', system-ui, sans-serif;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+        h1 {
+            font-family: 'JetBrains Mono', monospace;
+            color: #e0e0e0;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: #e67e22;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-family: 'JetBrains Mono', monospace;
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 40px;
+            margin-bottom: 16px;
+        }
+        p { margin-bottom: 16px; }
+        .finding {
+            background: #111827;
+            border-left: 3px solid #e67e22;
+            padding: 16px 20px;
+            margin: 24px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+        .finding strong { color: #e67e22; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.85rem;
+        }
+        th, td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid #1e2a3a;
+        }
+        th {
+            font-family: 'JetBrains Mono', monospace;
+            color: #e67e22;
+            font-weight: 500;
+            font-size: 0.8rem;
+        }
+        td { color: #b8bcc6; }
+        a { color: #e67e22; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .artifact-list {
+            list-style: none;
+            padding: 0;
+        }
+        .artifact-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #1e2a3a;
+            font-size: 0.9rem;
+        }
+        .artifact-list li:last-child { border-bottom: none; }
+        .artifact-list .filename {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #e67e22;
+        }
+        .artifact-list .desc {
+            color: #8890a0;
+            font-size: 0.8rem;
+            margin-top: 2px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 40px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+        .meta {
+            color: #8890a0;
+            font-size: 0.8rem;
+            margin-bottom: 32px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="https://nominex.org/research/what-we-found-building-poor-mans-multi-agent-memory.html" class="back-link">&larr; Back to paper</a>
+
+        <h1>Eval-Meta: Evaluating the Evaluation</h1>
+        <p class="subtitle">What happens when you test your scoring system against a blank agent</p>
+
+        <p class="meta">
+            2026-03-31 &mdash; Nominex Research<br>
+            20 probes &middot; 7 agent dispatches &middot; ~40 minutes elapsed
+        </p>
+
+        <p>Four of six agents on our team converged on the same score. The gaps between rounds were barely moving. The question was obvious: are the agents genuinely performing at the same level, or has the scoring system stopped being able to tell them apart?</p>
+
+        <p>We tested it. We sent a blank agent &mdash; no memory, no history, no team knowledge &mdash; to do the same work our experienced agents had done, and scored it with the same rubric. The result was the sharpest finding in the diagnostic.</p>
+
+        <div class="finding">
+            <strong>The blank agent scored 0.92.</strong> So did four of our established agents. The scoring system had roughly 0.04 of range between what any competent model achieves and what our most experienced agents achieve. It was measuring whether the model could do the task, not whether the agent's accumulated knowledge made the task better.
+        </div>
+
+        <p>The scoring system is not broken. Lower scores do predict more rework (33% rework rate below 0.85, just 4% above 0.91). Rankings within shared tasks are correct. The evaluator does not anchor to previous scores. But it cannot tell agents apart at the top end, because it measures task completion rather than whether the agent drew on what it has learned.</p>
+
+        <h2>Five things wrong with the scoring</h2>
+
+        <table>
+            <tr><th>Problem</th><th>What we found</th></tr>
+            <tr><td>"Stay in your lane" scored as a percentage, not a pass/fail</td><td>57% of scores already at the ceiling</td></tr>
+            <tr><td>Precision and recall measuring the same thing</td><td>Correlation of 0.82 &mdash; effectively one score with two names</td></tr>
+            <tr><td>Some types of work are easier to score well on</td><td>Infrastructure and QA tasks score 0.04-0.06 higher than writing and judgment tasks</td></tr>
+            <tr><td>Scores stop moving once enough rounds accumulate</td><td>Running average makes new scores barely register</td></tr>
+            <tr><td>Harder tasks score higher, not lower</td><td>Variance collapses from 0.083 on simple tasks to 0.016 on complex ones</td></tr>
+        </table>
+
+        <h2>What this means for the paper</h2>
+
+        <p>The paper's recall-depth evaluation uses a completely different scoring method from the one we diagnosed here. The headline findings &mdash; autonomous retrieval lift, the partial-context trap, model-independence, contradiction detection &mdash; are all unaffected.</p>
+
+        <p>What this diagnostic actually did was validate the paper's design choice. The paper chose to score whether agents retrieve and apply institutional knowledge, not whether they produce correct output. This diagnostic proved why that choice was right: a scoring system that measures output quality cannot tell a blank agent from an experienced one.</p>
+
+        <div class="finding">
+            <strong>The distinction that matters:</strong> A single correct answer is model capability. A correct answer that is consistent with 310 prior decisions is institutional coherence. The paper measures the second. This diagnostic proved the first is not enough.
+        </div>
+
+        <h2>Artifacts</h2>
+
+        <p>The full diagnostic &mdash; plan, probes, findings, control arm outputs, impact assessment &mdash; is published on GitHub:</p>
+
+        <p style="margin: 20px 0;"><a href="https://github.com/tessacodes/nominex.org/tree/main/research/eval-meta" style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">github.com/tessacodes/nominex.org/tree/main/research/eval-meta</a></p>
+
+        <table>
+            <tr><th>File</th><th>What it is</th></tr>
+            <tr><td>S96-eval-meta-report.md</td><td>Full report: findings, control arm results, recommendations</td></tr>
+            <tr><td>S96-eval-meta-probes.md</td><td>20 probes with expected results and interpretation guides</td></tr>
+            <tr><td>S96-eval-meta-tasks-1-3-findings.md</td><td>16-probe analysis: saturation, drift, discriminating power</td></tr>
+            <tr><td>S96-eval-meta-control-arm-tasks.md</td><td>Control arm task selections across three complexity tiers</td></tr>
+            <tr><td>S96-eval-meta-em-4-01-blank-output.md</td><td>Blank agent output: bug analysis (low complexity)</td></tr>
+            <tr><td>S96-eval-meta-em-4-02-blank-output.md</td><td>Blank agent output: architecture review (medium complexity)</td></tr>
+            <tr><td>S96-eval-meta-plan.md</td><td>Plan: 6 tasks, 20 probes, sequencing, risks</td></tr>
+            <tr><td>S96-eval-meta-rho-feedback.md</td><td>Impact assessment: paper and video implications</td></tr>
+        </table>
+
+        <h2>Related</h2>
+
+        <p><a href="../what-we-found-building-poor-mans-multi-agent-memory.html">Current paper</a> &middot; <a href="../what-we-found-building-poor-mans-multi-agent-memory_archived.html">Previous edition (before this diagnostic)</a></p>
+
+        <p style="margin-top: 60px; color: #555; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace;">Nominex Research &middot; nominex.org</p>
+    </div>
+</body>
+</html>
