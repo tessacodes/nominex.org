@@ -802,7 +802,7 @@ em {
 <p><strong>v2 (expanded vectors).</strong> 7 probes, 6 attack vectors, 4 agents, 3 arms. 84 dispatches. Treatment recall 1.00, precision 0.87 (three false positives across two of four agents).</p>
 <p><strong>v3 (cross-model).</strong> 8 probes, 7 attack vectors, 2 agents across 3 arms and 3 model tiers. 144 dispatches. A third agent ran a five-arm decomposition on a single model (reported in Appendix B).</p>
 <p>Approximately 250 total dispatches across all iterations. Each iteration was driven by findings from the previous: v1 asked "does memory help?"; v2 asked "where does memory fail?"; v3 asked "is the lift architectural or capability-dependent?"</p>
-<figure class="figure-placeholder"><div class="figure-placeholder-box">[Figure 6 — not yet produced]</div><figcaption>Figure 6. Evaluation evolution across three template versions. See figure specifications.</figcaption></figure>
+<figure><img src="../images/paper1_fig5-eval-evolution.png" alt="Figure 5. Evaluation evolution across three template versions. See figure specifications."><figcaption>Figure 5. Evaluation evolution across three template versions. See figure specifications.</figcaption></figure>
 <h3 id="i-reproducibility">I. Reproducibility</h3>
 <p>This protocol can be run by anyone with:</p>
 <ol>
@@ -820,7 +820,7 @@ em {
 <p><strong>1. Autonomous retrieval accounts for approximately 85% of memory lift.</strong> The agent deciding to read its full memory files, not what was pre-loaded into its context, accounts for the overwhelming majority of value. The mechanism is simple: the agent opens the full version of a Tier 1 file it was already shown the tail of, reads entries beyond the loaded window, and uses what it finds. The file taxonomy and partial load do the priming; the agent does the navigation.</p>
 <p><strong>2. Partial context is worse than no context (on targeted probes).</strong> When the window gives agents half an answer, the failure is worse than no context: the agent loses its uncertainty signal. A no-memory control at least acknowledges what it does not know. An agent with partial context does not know what it is missing. This is undetectable without targeted evaluation.</p>
 <p>All three models scored 0.2 on the partial-context probe (AV-7) in window-only mode for the marketing agent. The agent received one half of a two-part answer, treated it as complete, and responded confidently. The response reads well. It is wrong. At aggregate, the window helps: marketing agent Arm A (0.472) outscores Arm D (0.380). The partial-context trap is probe-specific, not universal. But it is the most dangerous failure because it is invisible without adversarial evaluation: the response looks correct to a human reviewer.</p>
-<figure class="figure-placeholder"><div class="figure-placeholder-box">[Figure 4 — not yet produced]</div><figcaption>Figure 4. The partial-context trap. Side-by-side comparison of Arm A (0.2, all models) vs. Arm B (0.8-1.0). See figure specifications.</figcaption></figure>
+<figure><img src="../images/paper1_fig4-partial-context-trap.png" alt="Figure 4. The partial-context trap. Side-by-side comparison of Arm A (0.2, all models) vs. Arm B (0.8-1.0). See figure specifications."><figcaption>Figure 4. The partial-context trap. Side-by-side comparison of Arm A (0.2, all models) vs. Arm B (0.8-1.0). See figure specifications.</figcaption></figure>
 <h3 id="lift-decomposition">Lift decomposition</h3>
 <p><strong>Table 2. Lift decomposition (primary agents)</strong></p>
 <div class="table-wrapper"><table>
@@ -832,7 +832,7 @@ em {
   </tbody>
 </table></div>
 <p><em>Composites recalculated excluding AV-6 (git-history retrieval), which is defined in §IV.D but excluded from headline scores because PMM does not truncate files in normal operation, making git-only retrieval a scenario that does not arise operationally. Arm B composites are model averages (mean across Opus, Sonnet, Haiku). Retrieval share = retrieval lift as a percentage of total lift. Per-probe Arm D scores were not recorded in the eval artifacts; Arm D recalculation uses bounded estimates (see §IV.C). Infrastructure agent results (five-arm decomposition, different probe set) are reported in Appendix B. All agents used the same sliding window configuration (decisions: tail:10, lessons: tail:5, timeline: tail:5, all other Tier 1 files: full). We did not test different window sizes; whether a larger or smaller window would change the window lift is an untested variable.</em></p>
-<figure class="figure-placeholder"><div class="figure-placeholder-box">[Figure 1 — not yet produced]</div><figcaption>Figure 1. Lift decomposition stacked bar chart. See figure specifications.</figcaption></figure>
+<figure><img src="../images/paper1_fig1-lift-decomposition.png" alt="Figure 1. Lift decomposition stacked bar chart. See figure specifications."><figcaption>Figure 1. Lift decomposition stacked bar chart. See figure specifications.</figcaption></figure>
 <h3 id="the-lift-is-model-independent-with-one-important-exception">The lift is model-independent (with one important exception)</h3>
 <p><strong>Table 3. Autonomous retrieval composites by model</strong></p>
 <div class="table-wrapper"><table>
@@ -845,7 +845,7 @@ em {
 <p><em>Composites recalculated excluding AV-6 (see Table 2 footnote).</em></p>
 <p>Cross-model range (~0.07) is smaller than the difference between agents. Haiku, the smallest and cheapest model, scores 0.889-0.911. The memory architecture carries even a lightweight model.</p>
 <p><strong>The exception: contradiction detection.</strong> Model independence holds at the composite level but breaks for specific probe types. For staleness detection specifically (AV-3), Sonnet scored 0.2 on the marketing agent (citing a superseded decision as current) while Opus scored 0.8. Teams deploying smaller models for staleness-sensitive queries should not rely on the composite model-independence finding. See below.</p>
-<figure class="figure-placeholder"><div class="figure-placeholder-box">[Figure 2 — not yet produced]</div><figcaption>Figure 2. Cross-model Arm B composites. See figure specifications.</figcaption></figure>
+<figure><img src="../images/paper1_fig2-cross-model-arm-b.png" alt="Figure 2. Cross-model Arm B composites. See figure specifications."><figcaption>Figure 2. Cross-model Arm B composites. See figure specifications.</figcaption></figure>
 <h3 id="contradiction-detection-is-the-capability-frontier">Contradiction detection is the capability frontier</h3>
 <p><strong>Table 4. Contradiction detection scores (AV-3), Arm B (autonomous) and Arm A (window-only)</strong></p>
 <div class="table-wrapper"><table>
@@ -880,7 +880,7 @@ em {
   </tbody>
 </table></div>
 <p>Zero false positives for Opus across both agents (18 probes). Giving agents access to structured memory did not increase fabrication.</p>
-<figure class="figure-placeholder"><div class="figure-placeholder-box">[Figure 3 — not yet produced]</div><figcaption>Figure 3. Confusion matrix grid. See figure specifications.</figcaption></figure>
+<figure><img src="../images/paper1_fig3-confusion-matrix.png" alt="Figure 3. Confusion matrix grid. See figure specifications."><figcaption>Figure 3. Confusion matrix grid. See figure specifications.</figcaption></figure>
 <p><em>Glossary: <strong>TP</strong> (true positive) = correct answer grounded in institutional memory. <strong>TN</strong> (true negative) = correctly identified that no relevant institutional knowledge exists. <strong>FP</strong> (false positive) = cited institutional knowledge incorrectly or fabricated a source. <strong>FN</strong> (false negative) = failed to ground the answer in institutional memory (including correct answers reached by general reasoning without citation). <strong>Precision</strong> = TP / (TP + FP). <strong>Recall</strong> = TP / (TP + FN). <strong>F1</strong> = harmonic mean of precision and recall.</em></p>
 <h3 id="domain-specificity-amplifies-the-lift">Domain specificity amplifies the lift</h3>
 <p><strong>Table 7. Calibration baseline (v1, two-arm: full memory access vs no memory)</strong></p>
