@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nominex Internal Brief — MemPalace's 100% LongMemEval Claim</title>
+<style>
+  :root {
+    --black: #0a0e17;
+    --orange: #e67e22;
+    --orange-light: #f39c12;
+    --white: #f0f0f0;
+    --grey: #8a8a9a;
+    --grey-light: #1a1f2e;
+    --grey-mid: #252a3a;
+    --red: #e74c3c;
+    --green: #27ae60;
+    --amber: #f39c12;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Georgia', serif;
+    line-height: 1.7;
+    font-size: 17px;
+  }
+
+  a { color: var(--orange); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #1e2535;
+  }
+  .logo {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.15em;
+    color: var(--orange);
+  }
+  .logo span { color: var(--grey); font-weight: 300; font-size: 13px; letter-spacing: 0.1em; margin-left: 10px; }
+  nav .meta { font-family: 'Helvetica Neue', sans-serif; font-size: 12px; color: var(--grey); letter-spacing: 0.05em; }
+
+  .hero {
+    max-width: 820px;
+    margin: 70px auto 40px;
+    padding: 0 40px;
+  }
+  .hero-tag {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 400;
+    margin-bottom: 28px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em { font-style: normal; color: var(--orange); }
+  .hero .verdict {
+    font-size: 21px;
+    color: #d8e0f0;
+    line-height: 1.55;
+    padding: 24px 28px;
+    background: var(--grey-light);
+    border-left: 4px solid var(--orange);
+    border-radius: 0 6px 6px 0;
+  }
+  .hero .verdict strong { color: var(--orange-light); }
+
+  section { max-width: 820px; margin: 0 auto; padding: 50px 40px; }
+  section + section { border-top: 1px solid #1e2535; }
+
+  .section-label {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  h2 {
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 22px;
+    letter-spacing: -0.02em;
+  }
+  h2 em { font-style: normal; color: var(--orange); }
+
+  h3 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-top: 26px;
+    margin-bottom: 10px;
+  }
+
+  p { margin-bottom: 16px; color: #c8d0e0; }
+  p:last-child { margin-bottom: 0; }
+
+  ul, ol { margin: 0 0 18px 22px; color: #c8d0e0; }
+  li { margin-bottom: 10px; line-height: 1.6; }
+  li strong { color: var(--white); }
+
+  .callout {
+    background: var(--grey-light);
+    border-left: 3px solid var(--orange);
+    padding: 22px 26px;
+    border-radius: 0 6px 6px 0;
+    margin: 24px 0;
+    font-size: 16px;
+  }
+  .callout.warn { border-left-color: var(--red); }
+  .callout.ok { border-left-color: var(--green); }
+  .callout p { margin: 0; color: #d8e0f0; }
+  .callout p + p { margin-top: 10px; }
+
+  blockquote {
+    margin: 20px 0;
+    padding: 16px 22px;
+    background: #0f1522;
+    border-left: 3px solid var(--grey);
+    color: #b0b8cc;
+    font-style: italic;
+    font-size: 15px;
+    border-radius: 0 4px 4px 0;
+  }
+  blockquote cite {
+    display: block;
+    margin-top: 10px;
+    font-style: normal;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    color: var(--grey);
+    letter-spacing: 0.03em;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid #1e2535;
+    color: #c8d0e0;
+    vertical-align: top;
+  }
+  th {
+    color: var(--orange);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #2e3550;
+  }
+  td code {
+    background: #0f1522;
+    color: var(--orange-light);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+
+  .rating {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: 3px;
+  }
+  .rating.concern { background: rgba(231, 76, 60, 0.15); color: #ff7b6b; border: 1px solid rgba(231, 76, 60, 0.3); }
+  .rating.unclear { background: rgba(243, 156, 18, 0.12); color: var(--amber); border: 1px solid rgba(243, 156, 18, 0.3); }
+  .rating.clean { background: rgba(39, 174, 96, 0.12); color: #5ed17c; border: 1px solid rgba(39, 174, 96, 0.3); }
+
+  code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 14px; color: var(--orange-light); }
+  p code, li code { background: #0f1522; padding: 1px 6px; border-radius: 3px; font-size: 13px; }
+
+  .sources {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+    border-top: 1px solid #1e2535;
+    font-size: 13px;
+    color: var(--grey);
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .sources h3 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .sources ul { margin-left: 18px; }
+  .sources li { margin-bottom: 6px; font-size: 13px; line-height: 1.5; }
+  .sources a { color: #b0b8cc; }
+  .sources a:hover { color: var(--orange); }
+
+  .footer-note {
+    text-align: center;
+    padding: 20px 40px 60px;
+    color: var(--grey);
+    font-size: 12px;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">NOMINEX <span>INTERNAL BRIEF</span></div>
+  <div class="meta">2026-04-11 · Prepared by Vera · Classification: Founding team</div>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Competitive intelligence · MemPalace / Milla Jovovich</div>
+  <h1>MemPalace's "100% on LongMemEval" is a <em>metric category error</em>, not a breakthrough.</h1>
+  <div class="verdict">
+    <strong>Verdict:</strong> The claim is real in the sense that the project and numbers exist, but <strong>methodologically suspect and not comparable to the published LongMemEval leaderboard</strong>. MemPalace's benchmark runner measures session-level <code>recall_any@5</code> retrieval — not end-to-end QA with a judge — and the specific 100% number was hand-patched against three failing questions on the dev set. The honest raw number (96.6% R@5 with default embeddings, no LLM) is a respectable retrieval result for a zero-cost local system, but it is not a LongMemEval score in the sense the published leaderboard means, and does not invalidate Nominex's partial-context thesis.
+  </div>
+</div>
+
+<section>
+  <div class="section-label">1 · What we found</div>
+  <h2>Primary-source evidence</h2>
+
+  <p><strong>The project exists and is real.</strong> On 5 April 2026, a GitHub repository at <a href="https://github.com/milla-jovovich/mempalace" target="_blank">github.com/milla-jovovich/mempalace</a> was published under an MIT licence by an account registered to Milla Jovovich (the actress — Resident Evil, The Fifth Element). The engineering was done by <a href="https://x.com/bensig" target="_blank">Ben Sigman</a>, a developer and crypto-adjacent founder; Jovovich is credited as "architect" and public face. The pair used Anthropic's Claude Code to build the system. Within 48 hours the repo passed 23,000 stars and briefly became the #1 trending repo on GitHub, driven by mainstream tech press coverage (Decrypt, RT, Yahoo, Bitcoin.com, Kotaku) that leaned on the celebrity angle.</p>
+
+  <p>The product name is <em>MemPalace</em> (the inspiration is the ancient method-of-loci mnemonic technique). Product home: <a href="https://www.mempalace.tech/" target="_blank">mempalace.tech</a>.</p>
+
+  <p><strong>The 100% claim originated in Ben Sigman's launch tweet</strong>, which stated verbatim: "100% recall on LongMemEval — first perfect score ever recorded. 500/500 questions. Every question type at 100%." A screenshot of the tweet is embedded in GitHub Issue #29, which we treat as the canonical critique.</p>
+
+  <p><strong>The critique is also primary-source and devastating.</strong> <a href="https://github.com/milla-jovovich/mempalace/issues/29" target="_blank">Issue #29</a>, titled <em>"Multiple issues with benchmark methodology and scoring"</em>, was filed on 7 April 2026 by GitHub user <a href="https://github.com/dial481" target="_blank">dial481</a>, who discloses they work on a different AI memory project and are the author of a public LoCoMo ground-truth audit (<a href="https://github.com/dial481/locomo-audit" target="_blank">github.com/dial481/locomo-audit</a>). The issue was closed by the milla-jovovich account on 9 April 2026 with 41 thumbs-up reactions. Crucially, most of the critique is sourced to <strong>MemPalace's own <code>benchmarks/BENCHMARKS.md</code> file</strong>, which openly documents the methodological caveats that the launch post stripped out.</p>
+
+  <p><strong>Independent coverage</strong> of the controversy is available at <a href="https://cybernews.com/ai-news/milla-jovovich-mempalace-memory-tool/" target="_blank">Cybernews</a>, <a href="https://penfieldlabs.substack.com/p/milla-jovovich-just-released-an-ai" target="_blank">Penfield Labs Substack</a> ("None of the benchmark scores are real"), <a href="https://nicholasrhodes.substack.com/p/mempalace-ai-memory-review-benchmarks" target="_blank">Nicholas Rhodes' review</a>, and <a href="https://www.danilchenko.dev/posts/2026-04-10-mempalace-review-ai-memory-system-milla-jovovich/" target="_blank">danilchenko.dev</a>. All four converge on the same conclusion: real project, legitimate raw-retrieval number, misrepresented as a LongMemEval leaderboard score.</p>
+</section>
+
+<section>
+  <div class="section-label">2 · The architecture, as best we know</div>
+  <h2>How <em>MemPalace</em> actually works</h2>
+
+  <p>Architecture class: <strong>local-first vector DB + hierarchical metadata layer</strong>, closer to a ChromaDB skin than to a knowledge graph or agentic memory framework.</p>
+
+  <ul>
+    <li><strong>Storage.</strong> SQLite for structured state, ChromaDB for vectors. Runs entirely on the user's machine. Zero cloud dependencies in "raw" mode.</li>
+    <li><strong>Embeddings.</strong> Default ChromaDB embeddings (<code>all-MiniLM-L6-v2</code>, 384-dim) — an old, small, open-weight encoder, not a frontier model.</li>
+    <li><strong>Hierarchy.</strong> A fixed vocabulary of metadata categories the author calls wings / halls / rooms / closets / drawers / tunnels. In practice this is metadata filtering on top of ChromaDB — a standard Chroma feature, not a novel retrieval mechanism. Critics (including the Issue #29 author) call out the "+34% palace gain" as a comparison between unfiltered and metadata-filtered search, not evidence of architectural innovation.</li>
+    <li><strong>Write-time compute.</strong> On ingest, conversation data is stored verbatim (not summarised), then classified into wings/halls. The "AAAK" dialect is a claimed 30× lossless compression format readable by any LLM without a decoder — but no round-trip information-retention eval ships with the repo, and applying AAAK drops the retrieval score from 96.6% to 84.2% (<strong>12.4 points</strong>), which contradicts the "lossless" framing. Realistic description: structured shorthand, not lossless compression.</li>
+    <li><strong>Retrieval.</strong> Two-pass: classify the query into a hall, then do cosine-distance search weighted by hall match. Top-k results returned. In the "hybrid" mode that produces the 100% number, results are then reranked by a paid Claude Haiku call.</li>
+    <li><strong>Base model.</strong> For the raw 96.6% result, <strong>no LLM at all</strong> — just embeddings and cosine distance. For the 100% hybrid-mode result, <strong>Claude Haiku</strong> for reranking on LongMemEval (and Claude Sonnet for the separate LoCoMo number). So the "no API key, no cloud" marketing describes the raw mode, and the "100%" marketing describes the hybrid mode — two different configurations fused in the launch copy.</li>
+    <li><strong>Semantic vs episodic.</strong> No explicit separation. Everything goes in as verbatim session text, organised by metadata category.</li>
+    <li><strong>Agentic workflow.</strong> No planner, no reflection, no summariser. It's a retrieval system.</li>
+  </ul>
+
+  <p class="callout">Net: MemPalace is <strong>a well-packaged local RAG system with an old embedding model, a metadata taxonomy, and an optional Haiku reranker</strong>. It is not a new memory architecture in the sense that Letta, MemGPT, Zep, or PMM are. The honest technical contribution is "here's a zero-cost local retrieval setup that works surprisingly well on user-turn-only embeddings."</p>
+</section>
+
+<section>
+  <div class="section-label">3 · The claim, parsed</div>
+  <h2>What the 100% <em>actually</em> measures</h2>
+
+  <p>This is the crux. Understanding it requires separating three things that MemPalace's launch post conflated: (a) which benchmark, (b) which metric, (c) which scoring model.</p>
+
+  <h3>Which benchmark</h3>
+  <p>LongMemEval-<code>s</code>, the "small" variant of <a href="https://github.com/xiaowu0162/LongMemEval" target="_blank">LongMemEval</a>. 500 questions, haystacks of roughly 50 prior sessions per question, around 115K tokens per haystack. Full benchmark, not a sub-category. No modification to the question set itself.</p>
+
+  <h3>Which metric (this is the category error)</h3>
+  <p>LongMemEval as published is an <strong>end-to-end QA benchmark</strong>. A system must (1) retrieve relevant sessions from the haystack, (2) <em>generate an answer</em>, and (3) have that answer marked correct by a GPT-4 judge. Published leaderboard numbers are the percentage of questions where the generated answer was judged correct.</p>
+
+  <p>MemPalace's <code>benchmarks/longmemeval_bench.py</code> <strong>does step (1) only</strong>. It never generates an answer. It never invokes a judge. For each question it:</p>
+
+  <ol>
+    <li>Concatenates only the <em>user</em> turns of each session (assistant turns are not indexed at all).</li>
+    <li>Embeds with the default ChromaDB MiniLM encoder.</li>
+    <li>Returns the top 5 sessions by cosine distance to the question text.</li>
+    <li>Reads the gold <code>answer_session_ids</code> labels that ship with the dataset, and if <strong>any one</strong> of them appears in the top-5, awards a score of 1.0.</li>
+  </ol>
+
+  <p>This is <code>recall_any@5</code>. Not LongMemEval. A system that retrieves the right session and then answers wrong scores 100% on this metric and 0% on the published leaderboard. An independent tester (<code>parcadei</code> on X, cited by Penfield Labs) plugged MemPalace into a real end-to-end QA harness and reported that when you actually have an LLM answer questions using MemPalace's retrieved context, the right answer comes back <strong>roughly 17% of the time</strong>. That number is unverified by us, but it's directionally consistent with what the runner pipeline does vs. what it claims.</p>
+
+  <p>To add insult: the runner also computes <code>recall_all@5</code> (all gold sessions must appear in the top-5), and chose to report <code>recall_any</code>. On multi-gold-session questions <code>recall_any</code> is substantially softer.</p>
+
+  <h3>Which scoring model</h3>
+  <p>There is <strong>no GPT-4 judge in MemPalace's pipeline at all</strong>. The "100% with Haiku" number uses Claude Haiku as a <em>reranker</em>, not as a judge. Haiku looks at the top candidates and reorders them; scoring is still label-set overlap, not answer correctness. So the "100%" reflects "after Haiku rerank, a gold session ID is in the top-5 100% of the time" — on a test set whose failing cases were patched by hand (see next section).</p>
+
+  <h3>Which base model for generation</h3>
+  <p>There isn't one. MemPalace doesn't generate answers. Every frontier-model concern about benchmark contamination is therefore moot for this specific claim — because the claim isn't about question answering, it's about retrieval recall on user-turn embeddings. This is both the generous interpretation ("no, they didn't cheat with a bigger model") and the damning one ("the metric is not what you think it is").</p>
+</section>
+
+<section>
+  <div class="section-label">4 · Credibility assessment</div>
+  <h2>Does the claim survive scrutiny?</h2>
+
+  <p>Our honest per-concern read. Everything here is sourced to Issue #29, which is itself sourced to MemPalace's own <code>BENCHMARKS.md</code>:</p>
+
+  <table>
+    <thead>
+      <tr><th>Concern</th><th>Rating</th><th>Evidence</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Overfitting / teaching to the test</strong></td>
+        <td><span class="rating concern">Likely concern</span></td>
+        <td>MemPalace's own BENCHMARKS.md states: <em>"This is teaching to the test. The fixes were designed around the exact failure cases, not discovered by analyzing general failure patterns."</em> The 100% was reached by adding three targeted patches (quoted-phrase boost, person-name boost for "Rachel", high-school-reunion pattern match) against three specific dev-set failures. The held-out 450 number is 98.4%.</td>
+      </tr>
+      <tr>
+        <td><strong>Non-standard scoring (category error)</strong></td>
+        <td><span class="rating concern">Verified concern</span></td>
+        <td>Runner computes <code>recall_any@5</code> retrieval, not end-to-end QA. No answer generation, no GPT-4 judge. All three numbers (96.6, 98.4, 100) are retrieval numbers dressed as LongMemEval scores. The honest framing would be "MiniLM recall on user-turn-only embeddings," which is not a published benchmark.</td>
+      </tr>
+      <tr>
+        <td><strong>Rubric gaming (recall_any vs recall_all)</strong></td>
+        <td><span class="rating concern">Likely concern</span></td>
+        <td>Runner computes both <code>recall_any@5</code> and <code>recall_all@5</code> and reports the easier one. For multi-session questions, this roughly multiplies the odds of credit by the number of required sessions.</td>
+      </tr>
+      <tr>
+        <td><strong>Answer leakage</strong></td>
+        <td><span class="rating unclear">Unclear / N/A</span></td>
+        <td>No answer generation pipeline, so no classical leakage surface. However, gold session IDs are read directly from the dataset to score retrieval — trivially true by construction.</td>
+      </tr>
+      <tr>
+        <td><strong>Single-run variance</strong></td>
+        <td><span class="rating clean">Not a concern for raw 96.6%</span></td>
+        <td>Retrieval with fixed embeddings is deterministic. The raw 96.6% number is reproducible and dial481 (the critic) confirms so directly.</td>
+      </tr>
+      <tr>
+        <td><strong>Benchmark contamination of base model</strong></td>
+        <td><span class="rating clean">Not applicable</span></td>
+        <td>No generative model in the raw pipeline. Haiku's role is reranking a small candidate set, not answering from training-data memorisation.</td>
+      </tr>
+      <tr>
+        <td><strong>Local/free deployment marketing</strong></td>
+        <td><span class="rating concern">Likely concern</span></td>
+        <td>The 100% requires a paid Claude Haiku call. The "no API key, no cloud" description belongs to the raw 96.6% mode. Two configurations welded together in marketing copy.</td>
+      </tr>
+      <tr>
+        <td><strong>Related claims (AAAK "lossless", LoCoMo 100%)</strong></td>
+        <td><span class="rating concern">Multiple concerns</span></td>
+        <td>LoCoMo 100% is from <code>top_k=50</code> on conversations containing 19–32 sessions — retrieval is structurally bypassed because every candidate is always in the pool. AAAK has no round-trip eval and reduces LongMemEval score by 12.4 points, which is not lossless by any definition.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <p><strong>Plain-English summary.</strong> The "100% on LongMemEval" headline fails in two independent ways: first, the runner measures the wrong thing (retrieval recall, not end-to-end answer correctness); second, even granting the wrong thing, the 100% required three hand-coded patches targeted at three specific failing questions. The raw, unpatched, no-LLM number on the same runner is 96.6% — which is a genuine and reproducible retrieval result for a zero-cost local setup, but it is <em>not comparable</em> to any number on the published LongMemEval leaderboard and should not be cited as one.</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">5 · Strategic implications for Nominex</div>
+  <h2>What this means for <em>our</em> positioning</h2>
+
+  <ul>
+    <li><strong>MemPalace does not measure the surface Nominex argues about.</strong> Our partial-context trap thesis is about what happens when an agent generates and reasons under a lossy, retrieval-shaped window into prior state. MemPalace's headline number is a retrieval-only metric that never gets to the reasoning step. The two systems are measuring different stages of the same pipeline. Their "100%" is silent on our thesis — it doesn't support it and it doesn't refute it.</li>
+    <li><strong>Nominex is not in direct competition.</strong> MemPalace is a local single-agent RAG tool with a fixed metadata taxonomy. Nominex / PMM operates cross-agent, cross-provider, cross-tool with async enrichment and a structured semantic layer. The architectural distance is large enough that they are adjacent, not competing. Their success actually widens the "structured memory matters" tent we want to pitch under.</li>
+    <li><strong>The v1.5 related-work section should cite this carefully.</strong> We should reference MemPalace as an example of the <em>framing confusion</em> in the space — a project whose own BENCHMARKS.md candidly documents that its 100% is teaching-to-the-test, but whose launch copy stripped every caveat. This is a useful foil for the "what does a real memory eval look like?" argument. Do not dismiss it; credit the honest 96.6% raw-retrieval result and then separate it cleanly from LongMemEval leaderboard numbers.</li>
+    <li><strong>The reframe is that MemPalace <em>supports</em> our argument, not undermines it.</strong> The controversy demonstrates (a) the market is hungry for local structured memory — 23K GitHub stars in 48 hours validates demand, (b) existing memory evals are easy to game and misreport, which is exactly the gap a more honest benchmarking effort could fill, and (c) celebrity hype outperforms rigour in short-term attention, which is a marketing lesson we can absorb without copying.</li>
+    <li><strong>The bear case if we're wrong.</strong> If an independent party reproduces a high-90s number on a properly-judged LongMemEval run using MemPalace's retrieval + any modern answerer, the headline would still be compromised on process, but the underlying claim ("hierarchical local retrieval is competitive with paid cloud memory products") would get stronger. The bear case for Nominex is that "good enough local retrieval" becomes the default and the cross-agent story has to do more work. We should pre-empt this by making the cross-agent / cross-provider value explicit, not just the quality-of-memory value.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="section-label">6 · Open questions</div>
+  <h2>What we don't yet know</h2>
+
+  <ul>
+    <li><strong>Does a proper end-to-end run of MemPalace + any frontier answerer actually hit the high 90s on real LongMemEval QA?</strong> The 17% figure from <code>parcadei</code> is one data point, unverified and not cited to a reproducible harness. This is the single most important number we don't have.</li>
+    <li><strong>Will the maintainers correct the launch messaging, or just the README?</strong> As of the issue being closed on 9 April, headline numbers on mempalace.tech still feature the 100% framing with a footnote. Worth re-checking in a week.</li>
+    <li><strong>What is Mila / Milla's actual technical involvement?</strong> Reporting uniformly says Ben Sigman did the engineering and she is the "architect" and public face. We have no evidence of her prior AI / memory / benchmarks work and believe the credibility weight sits entirely on Sigman and any future third-party reproductions.</li>
+    <li><strong>Has the LongMemEval author team (Xiaowu et al.) commented publicly?</strong> A statement from the benchmark maintainers disclaiming the "first perfect score" phrasing would be the clearest resolution. We did not find one; worth a targeted search in a few days.</li>
+    <li><strong>Is there any independent reimplementation of MemPalace's hierarchy on a different embedding model?</strong> Would separate the "hierarchy helps" claim from the "MiniLM is surprisingly OK on LongMemEval-s" claim. Not found in our search.</li>
+    <li><strong>Does the LongMemEval leaderboard have or gain a "Memory Palace" entry?</strong> We did not verify the upstream leaderboard directly in this pass — flagged for follow-up.</li>
+  </ul>
+</section>
+
+<div class="sources">
+  <h3>Sources</h3>
+  <ul>
+    <li>GitHub issue (primary technical critique): <a href="https://github.com/milla-jovovich/mempalace/issues/29" target="_blank">milla-jovovich/mempalace issue #29 — "Multiple issues with benchmark methodology and scoring"</a> (dial481, 2026-04-07, closed 2026-04-09)</li>
+    <li>MemPalace repository: <a href="https://github.com/milla-jovovich/mempalace" target="_blank">github.com/milla-jovovich/mempalace</a></li>
+    <li>MemPalace product site: <a href="https://www.mempalace.tech/" target="_blank">mempalace.tech</a></li>
+    <li>LongMemEval canonical repo: <a href="https://github.com/xiaowu0162/LongMemEval" target="_blank">github.com/xiaowu0162/LongMemEval</a></li>
+    <li>Penfield Labs critique: <a href="https://penfieldlabs.substack.com/p/milla-jovovich-just-released-an-ai" target="_blank">"None of the benchmark scores are real"</a></li>
+    <li>Nicholas Rhodes review: <a href="https://nicholasrhodes.substack.com/p/mempalace-ai-memory-review-benchmarks" target="_blank">"MemPalace Review: Real AI Memory Innovation, Questionable Benchmark Claims"</a></li>
+    <li>danilchenko.dev review: <a href="https://www.danilchenko.dev/posts/2026-04-10-mempalace-review-ai-memory-system-milla-jovovich/" target="_blank">"MemPalace Review: The AI Memory System That Broke GitHub in a Weekend"</a></li>
+    <li>Mainstream press: <a href="https://cybernews.com/ai-news/milla-jovovich-mempalace-memory-tool/" target="_blank">Cybernews</a>, <a href="https://decrypt.co/363524/fifth-element-milla-jovovich-ai-tool-mempalace" target="_blank">Decrypt</a>, <a href="https://kotaku.com/resident-evil-jovovich-mempalace-ai-github-2000685786" target="_blank">Kotaku</a>, <a href="https://news.bitcoin.com/resident-evil-star-milla-jovovich-builds-ai-memory-tool-with-engineer-ben-sigman/" target="_blank">Bitcoin.com</a></li>
+    <li>Launch tweet (reproduced in Issue #29): <a href="https://x.com/bensig" target="_blank">@bensig on X</a></li>
+    <li>LoCoMo ground-truth audit (context on critic's credibility): <a href="https://github.com/dial481/locomo-audit" target="_blank">github.com/dial481/locomo-audit</a></li>
+  </ul>
+</div>
+
+<div class="footer-note">
+  NOMINEX INTERNAL — Prepared by Vera for the founding team · 2026-04-11 · Not for external distribution
+</div>
+
+</body>
+</html>
