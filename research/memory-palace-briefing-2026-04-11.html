@@ -83,6 +83,49 @@
   section { max-width: 820px; margin: 0 auto; padding: 50px 40px; }
   section + section { border-top: 1px solid #1e2535; }
 
+  .correction {
+    max-width: 820px;
+    margin: 0 auto 0;
+    padding: 32px 40px 36px;
+    background: rgba(246, 139, 31, 0.06);
+    border-top: 3px solid var(--orange);
+    border-bottom: 1px solid #1e2535;
+  }
+  .correction .correction-label {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .correction h2 {
+    font-size: 22px;
+    line-height: 1.35;
+    margin-bottom: 18px;
+    color: var(--white);
+    font-weight: 500;
+  }
+  .correction p { margin-bottom: 14px; }
+  .correction ol { margin: 16px 0 18px 22px; }
+  .correction ol li { margin-bottom: 10px; color: var(--grey); }
+  .correction ol li strong { color: var(--white); }
+  .correction .numbers {
+    background: rgba(0,0,0,0.25);
+    border-left: 3px solid var(--orange);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-family: 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 14px;
+    color: var(--white);
+  }
+  .correction .signoff {
+    margin-top: 22px;
+    font-size: 13px;
+    color: var(--grey);
+    font-style: italic;
+  }
+
   .section-label {
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 11px;
@@ -236,6 +279,37 @@
   <div class="logo">NOMINEX <span>INTERNAL BRIEF</span></div>
   <div class="meta">2026-04-11 · Prepared by Vera · Classification: Founding team</div>
 </nav>
+
+<div class="correction">
+  <div class="correction-label">Correction posted · 2026-04-11</div>
+  <h2>We missed the project owner's retraction. Restoring the record.</h2>
+
+  <p>Shortly after this briefing went live, we discovered that the MemPalace project owner <code>milla-jovovich</code> had already posted a direct response to <a href="https://github.com/milla-jovovich/mempalace/issues/29#issuecomment-4215697566" target="_blank">Issue #29</a> on <strong>2026-04-09</strong>, two days before this page was published, explicitly retiring every claim this briefing critiques. Our research for this page missed that comment. This correction restores the record.</p>
+
+  <p>The owner's response conceded all seven audit points from <code>@dial481</code>:</p>
+
+  <ol>
+    <li><strong>100% LoCoMo</strong> — retired. Honest numbers from the same file: 60.3% R@10 raw, 88.9% R@10 hybrid v5.</li>
+    <li><strong>100% LongMemEval</strong> — retired. Hand-coded against three dev-set questions (quoted-phrase boost, person-name boost, "I still remember" pattern). Acknowledged as test contamination.</li>
+    <li><strong><code>recall_any@5</code> as headline metric</strong> — retired. Contributor <code>@gizmax</code> built <code>qa_bench_v2.py</code> to run the real QA pipeline with a calibrated GPT-4o judge.</li>
+    <li><strong>"2× Mem0"</strong> — retired as a metric mismatch (retrieval-recall vs end-to-end QA).</li>
+    <li><strong>1,986 LoCoMo question count</strong> — acknowledged as the inflated count that includes the 446 adversarial subset. Future reports will use the 1,540 non-adversarial subset with labelling.</li>
+    <li><strong>"100% beats every product, no API key, no cloud"</strong> — acknowledged as a dishonest weld of two different configurations. Fixed in commit <code>aa10f8f</code>.</li>
+    <li><strong>Harness bug #242</strong> (assistant-turn discard) — fixed first, before any public re-benchmark.</li>
+  </ol>
+
+  <p>The honest end-to-end QA numbers on the corrected <code>qa_bench_v2.py</code> harness are:</p>
+
+  <div class="numbers">0.668 raw &nbsp;·&nbsp; 0.672 rooms &nbsp;·&nbsp; 0.532 aaak</div>
+
+  <p>Those are the numbers that belong in a comparison table alongside Mem0, Zep, and Mastra. The <code>recall_any@5</code> headline is retired.</p>
+
+  <p>Issue #29 was closed as resolved with the owner's closing line: <em>"Your audit is the reason the project has a chance of being honest about what it does. Thank you."</em></p>
+
+  <p><strong>What this changes about the rest of this briefing:</strong> the architecture analysis (sections 2–4) is still accurate. The critique of the original launch messaging is still accurate as a historical record — it describes what the launch copy actually said. What was wrong, at the moment this page was first published, was our claim that the messaging remained uncorrected. The correction predated our briefing by two days. We're leaving the original analysis intact below so the record is legible, but the conclusion section framing is now obsolete.</p>
+
+  <p class="signoff">Source: <a href="https://github.com/milla-jovovich/mempalace/issues/29#issuecomment-4215697566" target="_blank">github.com/milla-jovovich/mempalace/issues/29#issuecomment-4215697566</a> · owner comment dated 2026-04-09 16:09 UTC · correction posted 2026-04-11 by Vera</p>
+</div>
 
 <div class="hero">
   <div class="hero-tag">Competitive intelligence · MemPalace / Milla Jovovich</div>
